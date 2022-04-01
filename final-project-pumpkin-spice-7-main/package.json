@@ -1,0 +1,57 @@
+{
+  "name": "lab8",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:4000",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^5.1.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "fsevents": "^2.3.2",
+    "hbs": "^4.2.0",
+    "http-proxy": "^1.18.1",
+    "mongodb": "^3.7.3",
+    "morgan": "^1.10.0",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.8.1",
+    "react-bootstrap": "^2.0.2",
+    "react-dom": "^16.8.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "^5.0.0",
+    "redis": "^4.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.4.1",
+    "thunk": "^0.0.1",
+    "ws": "^6.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-gateway": "docker build -f devops/gateway.Dockerfile -t gateway . && docker tag gateway chrisquinn/gateway && docker push chrisquinn/gateway",
+    "build-websocket": "docker build -f devops/websocket.Dockerfile -t websocket-demo . && docker tag websocket-demo chrisquinn/websocket-demo && docker push chrisquinn/websocket-demo",
+    "build-messanger": "docker build -f devops/messanger.Dockerfile -t messanger-demo . && docker tag messanger-demo chrisquinn/messanger-demo && docker push chrisquinn/messanger-demo",
+    "build-frontend": "docker build -f devops/frontend.Dockerfile -t react-demo . && docker tag react-demo chrisquinn/react-demo && docker push chrisquinn/react-demo",
+    "build-admin": "docker build -f devops/admin.Dockerfile -t admin-demo . && docker tag admin-demo chrisquinn/admin-demo && docker push chrisquinn/admin-demo",
+    "build-listings": "docker build -f devops/listings.Dockerfile -t listings-demo . && docker tag listings-demo chrisquinn/listings-demo && docker push chrisquinn/listings-demo",
+    "build-all-docker": "",
+    "deploy": "docker-compose -f devops/docker-compose.yml pull && docker stack deploy -c devops/docker-compose.yml message-app",
+    "stop": "docker stack remove message-app"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
